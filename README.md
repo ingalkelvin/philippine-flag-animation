@@ -1,4 +1,4 @@
 # philippine-flag-animation
 
 
-<img src="https://github.com/ingalkelvin/racingballanimation/blob/main/sa.png">
+<img src="https://github.com/ingalkelvin/philippine-flag-animation/blob/main/flag.png">
