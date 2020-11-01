@@ -1,0 +1,158 @@
+<!-- Ingal, Kelvin M. -->
+<!doctype html>
+	<head>
+		<meta charset="utf-8">
+		<title> Philippines Flag </title>
+		<link href = "style.css" rel = "stylesheet" type ="text/css">
+	</head>
+	<body>
+		<center> <canvas id = "canvas" width = "500" height ="500"> </center>
+		
+		<script>
+			window.onload = function() {
+				
+				var canvas = document.getElementById('canvas');
+				var context = canvas.getContext('2d');  
+				var tri = new Triangle();
+				var flag = false;
+				
+				tri.x = canvas.width/2;
+				tri.y = canvas.height/2;
+				
+				tri.draw(context);
+
+				(function drawFrame() {
+					window.requestAnimationFrame(drawFrame, canvas);
+					context.clearRect(0,0,canvas.width, canvas.height);
+					//tri.rotation += 1;
+					
+					if(flag != true)
+					{
+						if(tri.x <= canvas.width-300)
+							tri.x += 1;
+						else
+							flag = true;
+					
+					}
+					else {
+						if(tri.x >=50)
+							tri.x -= 1;
+						else
+							flag = false;
+					}	
+					tri.draw(context);
+				}());
+				
+			
+			};
+
+			function Triangle() {
+				this.x = 0;
+				this.y = 0;
+				this.rotation = 0;
+				this.color = "white";
+			}
+
+			Triangle.prototype.draw = function(context) {
+				
+				context.save();
+				context.translate(this.x, this.y);
+				context.lineWidth = 2;
+				context.rotate(this.rotation);
+				context.fillStyle = this.color;
+				context.beginPath();
+
+				context.moveTo(-50, 120);
+				context.lineTo(-50, -120);
+				context.lineTo(50, 0);
+
+				context.closePath();
+				context.fill();
+				context.stroke();
+
+				context.fillStyle = "Blue";
+				context.beginPath();
+
+				context.moveTo(-50, -120);
+				context.lineTo(300, -120);
+				context.lineTo(300, 0);
+				context.lineTo(50, 0);
+
+				context.closePath();
+				context.fill();
+				context.stroke();
+
+				context.fillStyle = "Red";
+				context.beginPath();
+
+				context.moveTo(50, 0);
+				context.lineTo(300, 0);
+				context.lineTo(300, 120);
+				context.lineTo(-50, 120);
+
+				context.closePath();
+				context.fill();
+				context.stroke();
+
+				context.fillStyle = "Yellow";
+				context.beginPath();
+
+				context.arc(-10, 0,10,0,(Math.PI*2),true);
+				
+								
+				context.closePath();
+				context.fill();
+				context.stroke();
+
+				context.fillStyle = "Yellow";
+				context.beginPath();
+
+				//context.arc(-35, -70,5,0,(Math.PI*2),true);
+				context.moveTo(-40, -60);
+				context.lineTo(-30, -75);
+				context.lineTo(-20, -60);
+				context.lineTo(-40, -70);
+				context.lineTo(-20,-70);
+				context.lineTo(-40, -60);
+				
+								
+				context.closePath();
+				context.fill();
+				context.stroke();
+
+				context.fillStyle = "Yellow";
+				context.beginPath();
+
+				//context.arc(-35, 70,5,0,(Math.PI*2),true);
+				context.moveTo(-40, 60);
+				context.lineTo(-30, 75);
+				context.lineTo(-20, 60);
+				context.lineTo(-40, 70);
+				context.lineTo(-20,70);
+				context.lineTo(-40, 60);
+								
+				context.closePath();
+				context.fill();
+				context.stroke();
+				
+				context.fillStyle = "Yellow";
+				context.beginPath();
+
+				//context.arc(30, 0,5,0,(Math.PI*2),true);
+				context.moveTo(20, 5);
+				context.lineTo(30, -10);
+				context.lineTo(40, 5);
+				context.lineTo(20, -5);
+				context.lineTo(40, -5);
+				context.lineTo(20, 5);
+								
+				context.closePath();
+				context.fill();
+				context.stroke();
+
+				context.restore();
+			}
+		</script>
+		
+	</body>
+</html>
